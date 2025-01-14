@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* No sass é possivel criar variáveis, fazendo com que o código fique mais limpo e organizado e
+que seja possível alterar facilmente as cores do site, por exemplo. */
+body {
+  background-color: #eee;
+}
+
+header {
+  background-color: #eee;
+  /* também é possivel criar um seletor dentro de outro seletor, o que impede ter que criar várias regras para alterar itens especificos
+  permite que altere dentro de um seletor principal */
+}
+header h1 {
+  color: #111;
+}
+
+button {
+  padding: 16px;
+  background-color: #111;
+  color: #eee;
+  /* é possivel criar um pseudo elemento no sass, como o hover, 
+  que altera a cor do botão quando o mouse passa por cima usando o &: */
+}
+button:hover {
+  background-color: yellow;
+}
+
+/*# sourceMappingURL=main.css.map */
