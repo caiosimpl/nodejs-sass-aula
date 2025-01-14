@@ -1,0 +1,11 @@
+@use 'config/reset';
+@use 'config/cores';
+@use 'secoes/produtos';
+/* é possível quebrar o codigo em varias partes e utiliza-lo no main com o @use.
+Dessa forma, o código fica mais organizado e mais fácil de ser alterado. */
+
+
+
+body {
+    background-color: cores.$corPrincipal;
+}

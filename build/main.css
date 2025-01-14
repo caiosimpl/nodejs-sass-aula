@@ -1,20 +1,86 @@
 @charset "UTF-8";
-/* CSS Reset */
+/* fontes */
+/* paleta de cores */
+/* breakpoints */
 * {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  margin: 0;
+  font-family: Roboto, sans-serif;
 }
 
-.produtos {
-  background-color: green;
-}
-
-/* é possível quebrar o codigo em varias partes e utiliza-lo no main com o @use.
-Dessa forma, o código fica mais organizado e mais fácil de ser alterado. */
+/* O mixin é uma variável que pode ser utilizada em vários lugares do código, sendo possível escrever
+diversos atributos, diferente do $
+Também é possível passar parâmetros no (), acompanhados do $ */
+/* também é possivel fazer funções, como no caso dessa abaixo que calcula e transforma pixels em ems
+a função, por padrão, recebe parametros, que podem ser alterados, e retorna um valor */
 body {
-  background-color: #ccc;
+  background-color: #dfe6e9;
+}
+
+header {
+  padding: 16px 0;
+  background-color: #74b9ff;
+  text-align: center;
+  color: #fff;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-container {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 760px;
+}
+.form-container h2 {
+  font-size: 3em;
+  text-align: center;
+}
+.form-container form {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 40px;
+}
+.form-container form label {
+  font-weight: bold;
+  cursor: pointer;
+}
+.form-container form input {
+  padding: 8px;
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #74b9ff;
+}
+.form-container form button {
+  padding: 8px;
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: #81ecec;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+.form-container form button:hover {
+  background-color: rgb(84.6827586207, 229.3172413793, 229.3172413793);
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 80%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

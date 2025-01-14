@@ -1,11 +1,91 @@
-@use 'config/reset';
-@use 'config/cores';
-@use 'secoes/produtos';
-/* é possível quebrar o codigo em varias partes e utiliza-lo no main com o @use.
-Dessa forma, o código fica mais organizado e mais fácil de ser alterado. */
+@use 'config/reset';    // Importa o reset
+@use 'config/variaveis';   // Importa as variáveis
+@use 'sass:math';   // Importa a biblioteca math do sass
 
 
+/* O mixin é uma variável que pode ser utilizada em vários lugares do código, sendo possível escrever
+diversos atributos, diferente do $
+Também é possível passar parâmetros no (), acompanhados do $ */
 
-body {
-    background-color: cores.$corPrincipal;
+@mixin elementoForm() {
+    padding: 8px;
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
 }
+
+/* também é possivel fazer funções, como no caso dessa abaixo que calcula e transforma pixels em ems
+a função, por padrão, recebe parametros, que podem ser alterados, e retorna um valor */
+
+@function convertePxEm($alvo, $contexto: 16px) {
+    @return math.div($alvo, $contexto)+em;
+}
+
+body{
+    background-color: variaveis.$corDeFundo;
+}
+
+header {
+    padding: 16px 0;
+    background-color: variaveis.$corPrincipal;
+    text-align: center;
+    color: #fff;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+.form-container {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 760px;
+
+    h2 {
+        font-size: convertePxEm(48px);
+        text-align: center;
+    }
+
+    form {
+        width: 100%;
+        max-width: 480px;
+        margin-top: 40px;
+
+        label {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input {
+            @include elementoForm();
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid variaveis.$corPrincipal;
+        }
+
+        button {
+            @include elementoForm();
+            background-color: variaveis.$corSecundaria;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            &:hover {
+                background-color: darken(variaveis.$corSecundaria, 10%);
+            }
+        }
+
+    }
+}   
+
+@media screen and (max-width: variaveis.$mobile) {
+    .container {
+        max-width: 80%;
+    }
+}
+
